@@ -10,56 +10,71 @@ interface HeroProps {
 
 export function Hero({ image, title, subtitle }: HeroProps) {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-background">
-      {/* Background Image with Parallax-like feel */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={image}
-          alt="Museum Hero"
-          className="h-full w-full object-cover opacity-90 scale-105 animate-in fade-in duration-1000"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background/90" />
-      </div>
+    <section className="relative min-h-screen w-full overflow-hidden bg-card flex items-center pt-20">
+      
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full py-12">
+        
+        {/* Text Content */}
+        <div className="relative z-20 order-2 lg:order-1">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+             <div className="inline-block bg-secondary text-secondary-foreground px-4 py-2 font-mono text-sm font-bold border-2 border-black mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-2">
+                NOW ON VIEW
+             </div>
+             
+             <h1 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-8 tracking-tighter text-foreground">
+               {title.split(' ').map((word, i) => (
+                 <span key={i} className="block">{word}</span>
+               ))}
+             </h1>
+             
+             <p className="text-xl md:text-2xl text-muted-foreground max-w-lg mb-10 font-sans font-medium leading-tight">
+               {subtitle}
+             </p>
+             
+             <div className="flex flex-wrap gap-4">
+               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-black rounded-none px-8 py-8 text-xl font-bold tracking-wide shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+                 GET TICKETS
+               </Button>
+               <Button size="lg" variant="outline" className="bg-white text-foreground border-2 border-black hover:bg-muted rounded-none px-8 py-8 text-xl font-bold tracking-wide shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+                 LEARN MORE
+               </Button>
+             </div>
+          </motion.div>
+        </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl"
-        >
-          <span className="inline-block py-1 px-3 mb-6 border border-white/30 rounded-full text-white text-xs uppercase tracking-[0.2em] backdrop-blur-sm">
-            Featured Exhibition
-          </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-[1.1] mb-6 mix-blend-overlay">
-            {title}
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-xl mb-10 font-light leading-relaxed">
-            {subtitle}
-          </p>
-          
-          <div className="flex flex-wrap gap-4">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 border-none rounded-none px-8 py-6 text-base tracking-wide">
-              Reserve Tickets
-            </Button>
-            <Button size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black rounded-none px-8 py-6 text-base tracking-wide backdrop-blur-sm">
-              View Exhibition <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-        </motion.div>
-      </div>
+        {/* Graphic/Image Area */}
+        <div className="relative z-10 order-1 lg:order-2 h-[50vh] lg:h-[80vh] w-full flex items-center justify-center">
+           <div className="relative w-full h-full">
+              {/* Abstract Shapes Background */}
+              <div className="absolute top-10 right-10 w-3/4 h-3/4 bg-primary rounded-full opacity-20 blur-3xl"></div>
+              <div className="absolute bottom-10 left-10 w-1/2 h-1/2 bg-secondary rounded-full opacity-20 blur-3xl"></div>
+              
+              {/* Main Image Container */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                animate={{ opacity: 1, scale: 1, rotate: 2 }}
+                transition={{ duration: 0.8 }}
+                className="relative w-full h-full border-4 border-black bg-white p-4 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+              >
+                <img
+                  src={image}
+                  alt="Hero Visual"
+                  className="h-full w-full object-cover border-2 border-black grayscale hover:grayscale-0 transition-all duration-500"
+                />
+                
+                {/* Sticker Elements */}
+                <div className="absolute -top-6 -right-6 bg-yellow-400 text-black font-hand font-bold text-xl px-6 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-12">
+                  Open Daily!
+                </div>
+              </motion.div>
+           </div>
+        </div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/60"
-      >
-        <span className="text-[10px] uppercase tracking-[0.2em] mb-2">Scroll</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-white/60 to-transparent"></div>
-      </motion.div>
+      </div>
     </section>
   );
 }

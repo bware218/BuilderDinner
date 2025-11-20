@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button"; // Added import
 
 const artworks = [
   {
@@ -7,8 +8,9 @@ const artworks = [
     title: "Ancestral Echoes",
     artist: "Marcus Thorne",
     year: "2024",
-    imageKey: "abstract_portrait_in_oil_painting_style",
-    aspect: "aspect-[3/4]"
+    imageKey: "bold_geometric_abstract_art",
+    aspect: "aspect-[3/4]",
+    tag: "Painting"
   },
   {
     id: 2,
@@ -16,15 +18,17 @@ const artworks = [
     artist: "Sarah Jenkins",
     year: "2023",
     imageKey: "large_scale_colorful_abstract_painting",
-    aspect: "aspect-square"
+    aspect: "aspect-square",
+    tag: "Mixed Media"
   },
   {
     id: 3,
-    title: "Fragmented History",
+    title: "Manifesto",
     artist: "David Okonjo",
     year: "2024",
-    imageKey: "mixed_media_collage_art",
-    aspect: "aspect-[4/3]"
+    imageKey: "typography_based_art_poster",
+    aspect: "aspect-[4/3]",
+    tag: "Print"
   },
   {
     id: 4,
@@ -32,33 +36,41 @@ const artworks = [
     artist: "Elena Ross",
     year: "2022",
     imageKey: "modern_bronze_and_wood_sculpture",
-    aspect: "aspect-[3/4]"
+    aspect: "aspect-[3/4]",
+    tag: "Sculpture"
   }
 ];
 
-import portraitImg from "@assets/generated_images/abstract_portrait_in_oil_painting_style.png";
+import geometricImg from "@assets/generated_images/bold_geometric_abstract_art.png";
 import abstractImg from "@assets/generated_images/large_scale_colorful_abstract_painting.png";
-import collageImg from "@assets/generated_images/mixed_media_collage_art.png";
+import typoImg from "@assets/generated_images/typography_based_art_poster.png";
 import sculptureImg from "@assets/generated_images/modern_bronze_and_wood_sculpture.png";
 
 const images = {
-  abstract_portrait_in_oil_painting_style: portraitImg,
+  bold_geometric_abstract_art: geometricImg,
   large_scale_colorful_abstract_painting: abstractImg,
-  mixed_media_collage_art: collageImg,
+  typography_based_art_poster: typoImg,
   modern_bronze_and_wood_sculpture: sculptureImg
 };
 
 export function ArtworkGallery() {
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-6">
+    <section className="py-24 bg-background relative border-t-2 border-black">
+      {/* Background Grid Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.05] pointer-events-none"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div className="max-w-2xl">
-            <span className="text-primary font-sans text-sm tracking-widest uppercase font-bold mb-2 block">Curated Selection</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">Current Acquisitions</h2>
+            <div className="inline-block bg-black text-white px-3 py-1 font-mono text-xs font-bold uppercase mb-4 -rotate-1">
+              Curated Selection
+            </div>
+            <h2 className="text-5xl md:text-7xl font-display font-bold text-foreground tracking-tighter">
+              FRESH<br/>ACQUISITIONS
+            </h2>
           </div>
-          <a href="#" className="hidden md:flex items-center text-sm font-bold uppercase tracking-widest border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-colors mt-6 md:mt-0">
-            View Collection <ArrowUpRight className="ml-2 h-4 w-4" />
+          <a href="#" className="hidden md:flex items-center px-6 py-3 border-2 border-black font-bold uppercase tracking-wide bg-white hover:bg-black hover:text-white transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            View Collection <ArrowUpRight className="ml-2 h-5 w-5" />
           </a>
         </div>
 
@@ -70,36 +82,41 @@ export function ArtworkGallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className={`group relative cursor-pointer ${
+              className={`group relative ${
                 index === 0 ? "lg:col-span-5" : 
                 index === 1 ? "lg:col-span-7" : 
                 index === 2 ? "lg:col-span-8" : "lg:col-span-4"
               }`}
             >
-              <div className={`relative overflow-hidden w-full ${art.aspect} bg-muted`}>
+              <div className={`relative overflow-hidden w-full ${art.aspect} border-2 border-black bg-white p-2 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-[4px] group-hover:translate-y-[4px] transition-all duration-300`}>
+                <div className="absolute top-4 left-4 z-10 bg-white border border-black px-2 py-1 text-xs font-bold font-mono">
+                    #{art.tag.toUpperCase()}
+                </div>
                 <img
                   src={images[art.imageKey as keyof typeof images]}
                   alt={art.title}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
-              </div>
-              
-              <div className="mt-4 flex justify-between items-start">
-                <div>
-                  <h3 className="text-xl font-serif font-medium text-foreground group-hover:text-primary transition-colors">{art.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{art.artist}, {art.year}</p>
+                
+                {/* Overlay Info */}
+                <div className="absolute bottom-0 left-0 w-full bg-white border-t-2 border-black p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <div className="flex justify-between items-center">
+                    <div>
+                        <h3 className="text-lg font-display font-bold text-foreground leading-none">{art.title}</h3>
+                        <p className="text-xs font-mono text-muted-foreground mt-1">{art.artist} // {art.year}</p>
+                    </div>
+                    <Button size="icon" variant="ghost" className="rounded-full hover:bg-primary hover:text-white">
+                        <Plus className="h-5 w-5" />
+                    </Button>
+                  </div>
                 </div>
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-2 group-hover:translate-x-0">
-                  <ArrowUpRight className="h-5 w-5 text-foreground" />
-                </span>
               </div>
             </motion.div>
           ))}
         </div>
         
         <div className="mt-12 md:hidden">
-             <a href="#" className="flex items-center justify-center text-sm font-bold uppercase tracking-widest border-b border-foreground pb-1 hover:text-primary transition-colors">
+             <a href="#" className="flex items-center justify-center w-full px-6 py-4 border-2 border-black font-bold uppercase tracking-wide bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             View Collection <ArrowUpRight className="ml-2 h-4 w-4" />
           </a>
         </div>

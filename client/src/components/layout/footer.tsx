@@ -5,66 +5,69 @@ import { Input } from "@/components/ui/input";
 
 export function Footer() {
   return (
-    <footer className="bg-card text-card-foreground pt-20 pb-10 border-t border-border">
+    <footer className="bg-black text-white pt-20 pb-10 border-t-4 border-primary">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">
             <div className="flex flex-col items-start">
-              <span className="text-xs font-sans tracking-[0.2em] uppercase text-muted-foreground">The National</span>
-              <h2 className="text-3xl font-serif font-bold leading-none tracking-tight mb-6">AAMCA</h2>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Celebrating the richness of African American art, history, and culture through contemporary expression.
+              <div className="bg-white text-black w-12 h-12 flex items-center justify-center font-display font-bold text-2xl mb-4 rotate-3">
+                A
+              </div>
+              <h2 className="text-4xl font-display font-bold leading-none tracking-tighter mb-6">AAMCA</h2>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 font-mono">
+                Lab of Culture.<br/>
+                Open daily 10am - 6pm.
               </p>
               <div className="flex space-x-4">
-                <Button variant="ghost" size="icon" className="hover:text-primary"><Facebook className="h-4 w-4" /></Button>
-                <Button variant="ghost" size="icon" className="hover:text-primary"><Twitter className="h-4 w-4" /></Button>
-                <Button variant="ghost" size="icon" className="hover:text-primary"><Instagram className="h-4 w-4" /></Button>
-                <Button variant="ghost" size="icon" className="hover:text-primary"><Youtube className="h-4 w-4" /></Button>
+                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-white/10 rounded-none"><Facebook className="h-4 w-4" /></Button>
+                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-white/10 rounded-none"><Twitter className="h-4 w-4" /></Button>
+                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-white/10 rounded-none"><Instagram className="h-4 w-4" /></Button>
+                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-white/10 rounded-none"><Youtube className="h-4 w-4" /></Button>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="font-serif text-lg mb-6">Visit</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="#" className="hover:text-primary transition-colors">Plan Your Visit</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Hours & Admission</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Directions & Parking</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Accessibility</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Group Visits</Link></li>
+            <h3 className="font-display font-bold text-xl mb-6 border-b-2 border-primary/30 pb-2 inline-block">VISIT</h3>
+            <ul className="space-y-3 text-sm text-gray-400 font-bold tracking-wide">
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Plan Your Visit</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Hours & Admission</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Directions & Parking</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Accessibility</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Group Visits</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-serif text-lg mb-6">Explore</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="#" className="hover:text-primary transition-colors">Exhibitions</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Collections</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Events & Programs</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Research</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Education</Link></li>
+            <h3 className="font-display font-bold text-xl mb-6 border-b-2 border-primary/30 pb-2 inline-block">EXPLORE</h3>
+            <ul className="space-y-3 text-sm text-gray-400 font-bold tracking-wide">
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Exhibitions</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Collections</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Events & Programs</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Research</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:translate-x-2 transition-all block">Education</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-serif text-lg mb-6">Newsletter</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Subscribe to receive updates on exhibitions, events, and news.
+            <h3 className="font-display font-bold text-xl mb-6 border-b-2 border-primary/30 pb-2 inline-block">NEWSLETTER</h3>
+            <p className="text-sm text-gray-400 mb-4">
+              Join the movement. Get updates on workshops and shows.
             </p>
             <div className="flex space-x-2">
-              <Input placeholder="Email Address" className="bg-background border-input focus-visible:ring-primary" />
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Join</Button>
+              <Input placeholder="Email Address" className="bg-white/10 border-white/20 text-white focus-visible:ring-primary placeholder:text-white/30 rounded-none" />
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none font-bold">JOIN</Button>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-mono">
           <div className="flex space-x-6 mb-4 md:mb-0">
-            <Link href="#" className="hover:text-foreground">Privacy Policy</Link>
-            <Link href="#" className="hover:text-foreground">Terms of Use</Link>
-            <Link href="#" className="hover:text-foreground">Credits</Link>
+            <Link href="#" className="hover:text-white">Privacy Policy</Link>
+            <Link href="#" className="hover:text-white">Terms of Use</Link>
+            <Link href="#" className="hover:text-white">Credits</Link>
           </div>
-          <p>&copy; 2025 African American Museum of Contemporary Art. All rights reserved.</p>
+          <p>&copy; 2025 AAMCA. All rights reserved.</p>
         </div>
       </div>
     </footer>
