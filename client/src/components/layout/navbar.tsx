@@ -63,7 +63,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-12 mx-12">
           <Link href="/tour" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">The Tour</Link>
           <Link href="/stories" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Stories</Link>
           <Link href="/resources" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Resources</Link>
