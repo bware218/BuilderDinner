@@ -25,10 +25,14 @@ export default function RequestInvite() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      
+      const responseData = await response.json();
+      
       if (!response.ok) {
-        throw new Error(`${response.status}: ${response.statusText}`);
+        throw new Error(responseData.message || `${response.status}: ${response.statusText}`);
       }
-      return response.json();
+      
+      return responseData;
     },
     onSuccess: () => {
       setSubmitted(true);
@@ -37,10 +41,10 @@ export default function RequestInvite() {
         description: "Your invite request has been submitted.",
       });
     },
-    onError: () => {
+    onError: (error: Error) => {
       toast({
         title: "Error",
-        description: "Failed to submit request. Please try again.",
+        description: error.message || "Failed to submit request. Please try again.",
         variant: "destructive",
       });
     },

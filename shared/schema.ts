@@ -7,6 +7,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
 
 // Session storage table.
 // (IMPORTANT) This table is mandatory for Replit Auth, don't drop it.
@@ -43,9 +44,16 @@ export const inviteRequests = pgTable("invite_requests", {
   city: varchar("city").notNull(),
   role: varchar("role").notNull(),
   createdAt: timestamp("created_at").defaultNow(),
-});
+}, (table) => [
+  index("idx_invite_requests_email").on(table.email)
+]);
 
-export const insertInviteRequestSchema = createInsertSchema(inviteRequests).omit({
+export const insertInviteRequestSchema = createInsertSchema(inviteRequests, {
+  email: z.string().email("Invalid email address"),
+  fullName: z.string().min(1, "Full name is required"),
+  city: z.string().min(1, "City is required"),
+  role: z.enum(["Host", "Attendee"], { errorMap: () => ({ message: "Role must be either Host or Attendee" }) }),
+}).omit({
   id: true,
   createdAt: true,
 });

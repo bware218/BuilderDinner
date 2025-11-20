@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
 import { insertInviteRequestSchema } from "@shared/schema";
+import { fromZodError } from "zod-validation-error";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Auth middleware
@@ -26,10 +27,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate request body
       const validatedData = insertInviteRequestSchema.parse(req.body);
 
+      // Check for duplicate email
+      const existingRequest = await storage.getInviteRequestByEmail(validatedData.email);
+      if (existingRequest) {
+        return res.status(409).json({ 
+          message: "This email has already been registered for an invite. Please check your inbox for updates." 
+        });
+      }
+
       const inviteRequest = await storage.createInviteRequest(validatedData);
       res.json(inviteRequest);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error creating invite request:", error);
+      
+      // Handle Zod validation errors
+      if (error.name === 'ZodError') {
+        const validationError = fromZodError(error);
+        return res.status(400).json({ message: validationError.message });
+      }
+      
       res.status(400).json({ message: "Failed to create invite request" });
     }
   });
