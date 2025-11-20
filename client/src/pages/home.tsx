@@ -116,11 +116,12 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { day: "12", month: "OCT", city: "Atlanta, GA", venue: "Ponce City Market", status: "OPEN" },
-                { day: "24", month: "OCT", city: "Oakland, CA", venue: "The Tribune", status: "WAITLIST" },
-                { day: "05", month: "NOV", city: "Harlem, NYC", venue: "Red Rooster", status: "OPEN" }
+                { day: "20", month: "NOV", city: "Oakland, CA", venue: "The Tribune", status: "OPEN" },
+                { day: "08", month: "DEC", city: "Atlanta, GA", venue: "Ponce City Market", status: "OPEN" },
+                { day: "18", month: "DEC", city: "New York City", venue: "Red Rooster Harlem", status: "OPEN" },
+                { day: "03", month: "JAN", city: "Minneapolis, MN", venue: "TBA", status: "OPEN" }
               ].map((event, i) => (
                 <div key={i} className="group cursor-pointer relative">
                   <div className="absolute inset-0 bg-black translate-x-2 translate-y-2 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform"></div>
