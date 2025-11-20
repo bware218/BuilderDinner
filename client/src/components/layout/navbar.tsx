@@ -116,7 +116,7 @@ export function Navbar() {
                 </DropdownMenu>
               ) : (
                 <Button asChild className="hidden md:flex bg-primary text-primary-foreground hover:bg-primary/90 font-display font-bold tracking-wide border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
-                  <a href="/api/login">JOIN THE DINNER</a>
+                  <Link href="/request-invite">REQUEST INVITE</Link>
                 </Button>
               )}
             </>
