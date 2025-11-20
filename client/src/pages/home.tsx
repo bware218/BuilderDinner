@@ -1,13 +1,13 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/ui/hero-section";
-import { ArtworkGallery } from "@/components/ui/artwork-gallery";
+import { BuilderShowcase } from "@/components/ui/artwork-gallery"; // Renamed export in usage
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Calendar, ArrowRight, Mail } from "lucide-react";
+import { Calendar, ArrowRight, MapPin } from "lucide-react";
 
 // Import assets
-import museumInteraction from "@assets/generated_images/museum_visitors_interacting.png";
+import dinnerImg from "@assets/generated_images/collaborative_dinner_and_building_session.png";
 
 export default function Home() {
   return (
@@ -16,9 +16,9 @@ export default function Home() {
       
       <main>
         <Hero 
-          image={museumInteraction}
-          title="VOICES IN COLOR"
-          subtitle="A living laboratory of contemporary African American artistic expression. 50+ Artists. Infinite Perspectives."
+          image={dinnerImg}
+          title="BUILD IT YOURSELF"
+          subtitle="We're traveling the country to host dinners for non-technical founders. Bring your idea, leave with a prototype."
         />
         
         <section className="py-24 bg-primary text-primary-foreground border-y-2 border-black relative overflow-hidden">
@@ -30,55 +30,55 @@ export default function Home() {
               <div className="lg:col-span-8">
                 <div className="flex items-center mb-6 gap-4">
                     <div className="h-1 w-20 bg-black"></div>
-                    <span className="font-mono text-sm font-bold uppercase tracking-widest">Manifesto</span>
+                    <span className="font-mono text-sm font-bold uppercase tracking-widest">Our Mission</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 leading-[1.1] tracking-tight">
-                  NOT JUST A MUSEUM.<br/>
-                  <span className="bg-black text-white px-2 italic font-serif">A MOVEMENT.</span>
+                  SOFTWARE IS THE NEW<br/>
+                  <span className="bg-black text-white px-2 italic font-serif">LITERACY.</span>
                 </h2>
                 <p className="text-xl md:text-2xl font-medium leading-relaxed mb-8 opacity-90 max-w-3xl">
-                  The AAMCA is a space for radical imagination. We don't just hang art on walls; we spark conversations that dismantle boundaries. A sanctuary for cultural dialogue and a workshop for the future.
+                  You don't need a Computer Science degree to build solutions for your community. The Replit Fellows Dinner Tour is about demystifying code and empowering educators, parents, and business owners to become builders.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-6">
                     <div className="flex items-start gap-4">
                         <div className="bg-black text-white p-2 rounded-full font-bold font-mono">01</div>
-                        <p className="max-w-xs text-sm font-bold">Preserving the past through a lens of future innovation.</p>
+                        <p className="max-w-xs text-sm font-bold">Free mentorship from expert builders over a warm meal.</p>
                     </div>
                     <div className="flex items-start gap-4">
                         <div className="bg-black text-white p-2 rounded-full font-bold font-mono">02</div>
-                        <p className="max-w-xs text-sm font-bold">Amplifying voices that have reshaped the global artistic landscape.</p>
+                        <p className="max-w-xs text-sm font-bold">Walk away with a working prototype of your idea.</p>
                     </div>
                 </div>
               </div>
               
               <div className="lg:col-span-4">
                   <div className="bg-white text-black p-8 border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] rotate-2 transform hover:rotate-0 transition-transform duration-300">
-                      <h3 className="font-hand text-3xl font-bold mb-4 text-primary">Join the Lab</h3>
-                      <p className="font-sans font-bold mb-6">Get access to workshops, artist talks, and experimental sessions.</p>
-                      <Button className="w-full bg-black text-white hover:bg-black/80 font-bold border-2 border-transparent">BECOME A MEMBER</Button>
+                      <h3 className="font-hand text-3xl font-bold mb-4 text-primary">Host a Dinner</h3>
+                      <p className="font-sans font-bold mb-6">Want to bring the tour to your city? We're looking for community leaders.</p>
+                      <Button className="w-full bg-black text-white hover:bg-black/80 font-bold border-2 border-transparent">APPLY TO HOST</Button>
                   </div>
               </div>
             </div>
           </div>
         </section>
 
-        <ArtworkGallery />
+        <BuilderShowcase />
 
         <section className="py-24 bg-card border-b-2 border-black">
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b-4 border-black pb-6">
-              <h2 className="text-5xl font-display font-bold tracking-tighter">WHAT'S HAPPENING</h2>
+              <h2 className="text-5xl font-display font-bold tracking-tighter">TOUR DATES</h2>
               <a href="#" className="text-lg font-bold uppercase tracking-wide hover:text-primary mt-4 md:mt-0 flex items-center group">
-                Full Calendar <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                View All Cities <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { day: "12", month: "OCT", title: "Artist Talk: Marcus Thorne", time: "6:00 PM - Auditorium", type: "TALK" },
-                { day: "24", month: "OCT", title: "Workshop: Mixed Media", time: "2:00 PM - Studio A", type: "WORKSHOP" },
-                { day: "05", month: "NOV", title: "Gala: Night of Heritage", time: "7:00 PM - Grand Hall", type: "SOCIAL" }
+                { day: "12", month: "OCT", city: "Austin, TX", venue: "The Community Hall", status: "OPEN" },
+                { day: "24", month: "OCT", city: "Detroit, MI", venue: "Innovation Hub", status: "WAITLIST" },
+                { day: "05", month: "NOV", city: "Atlanta, GA", venue: "Tech Village", status: "OPEN" }
               ].map((event, i) => (
                 <div key={i} className="group cursor-pointer relative">
                   <div className="absolute inset-0 bg-black translate-x-2 translate-y-2 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform"></div>
@@ -88,13 +88,13 @@ export default function Home() {
                         <span className="block text-3xl font-display font-bold text-foreground leading-none">{event.day}</span>
                         <span className="block text-xs font-bold uppercase text-muted-foreground tracking-widest">{event.month}</span>
                       </div>
-                      <span className="inline-block px-2 py-1 bg-secondary text-secondary-foreground border border-black text-xs uppercase font-bold tracking-wider">
-                        {event.type}
+                      <span className={`inline-block px-2 py-1 border border-black text-xs uppercase font-bold tracking-wider ${event.status === 'OPEN' ? 'bg-secondary text-secondary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                        {event.status}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-display font-bold mb-2 group-hover:text-primary transition-colors leading-tight">{event.title}</h3>
+                    <h3 className="text-2xl font-display font-bold mb-2 group-hover:text-primary transition-colors leading-tight">{event.city}</h3>
                     <p className="text-muted-foreground font-mono text-sm mt-auto border-t border-dashed border-black/20 pt-4 flex items-center">
-                        <Calendar className="w-4 h-4 mr-2" /> {event.time}
+                        <MapPin className="w-4 h-4 mr-2" /> {event.venue}
                     </p>
                   </div>
                 </div>
@@ -105,13 +105,13 @@ export default function Home() {
         
         <section className="py-20 bg-background">
             <div className="container mx-auto px-6 text-center">
-                <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">STAY IN THE LOOP</h2>
-                <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Sign up for our newsletter to get the latest on exhibitions, workshops, and cultural experiments.</p>
+                <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">GOT AN IDEA?</h2>
+                <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Join the waitlist for the next dinner in your area. No coding experience required.</p>
                 
                 <div className="max-w-md mx-auto flex gap-4">
                     <input type="email" placeholder="YOUR EMAIL" className="flex-1 bg-white border-2 border-black px-4 py-3 font-bold placeholder:text-muted-foreground/50 outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" />
                     <Button size="lg" className="bg-black text-white font-bold px-8 border-2 border-black hover:bg-white hover:text-black transition-colors">
-                        JOIN
+                        I'M IN
                     </Button>
                 </div>
             </div>

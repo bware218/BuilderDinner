@@ -22,10 +22,10 @@ export function Hero({ image, title, subtitle }: HeroProps) {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
              <div className="inline-block bg-secondary text-secondary-foreground px-4 py-2 font-mono text-sm font-bold border-2 border-black mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-2">
-                NOW ON VIEW
+                COMING TO A CITY NEAR YOU
              </div>
              
-             <h1 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-8 tracking-tighter text-foreground">
+             <h1 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-8 tracking-tighter text-foreground uppercase">
                {title.split(' ').map((word, i) => (
                  <span key={i} className="block">{word}</span>
                ))}
@@ -37,10 +37,10 @@ export function Hero({ image, title, subtitle }: HeroProps) {
              
              <div className="flex flex-wrap gap-4">
                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-black rounded-none px-8 py-8 text-xl font-bold tracking-wide shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
-                 GET TICKETS
+                 RSVP NOW
                </Button>
                <Button size="lg" variant="outline" className="bg-white text-foreground border-2 border-black hover:bg-muted rounded-none px-8 py-8 text-xl font-bold tracking-wide shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
-                 LEARN MORE
+                 READ STORIES
                </Button>
              </div>
           </motion.div>
@@ -63,12 +63,12 @@ export function Hero({ image, title, subtitle }: HeroProps) {
                 <img
                   src={image}
                   alt="Hero Visual"
-                  className="h-full w-full object-cover border-2 border-black grayscale hover:grayscale-0 transition-all duration-500"
+                  className="h-full w-full object-cover border-2 border-black hover:scale-[1.02] transition-all duration-500"
                 />
                 
                 {/* Sticker Elements */}
                 <div className="absolute -top-6 -right-6 bg-yellow-400 text-black font-hand font-bold text-xl px-6 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-12">
-                  Open Daily!
+                  Pizza + Code!
                 </div>
               </motion.div>
            </div>

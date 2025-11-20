@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Menu, Search, ShoppingBag } from "lucide-react";
+import { Menu, Search, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState, useEffect } from "react";
@@ -36,11 +36,10 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="left" className="bg-background border-r-2 border-border p-8">
               <div className="flex flex-col space-y-6 mt-10">
-                <Link href="/visit" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">VISIT</Link>
-                <Link href="/exhibitions" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">EXHIBITIONS</Link>
-                <Link href="/collections" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">COLLECTIONS</Link>
-                <Link href="/events" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">EVENTS</Link>
-                <Link href="/about" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">ABOUT</Link>
+                <Link href="/tour" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">THE TOUR</Link>
+                <Link href="/stories" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">STORIES</Link>
+                <Link href="/resources" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">RESOURCES</Link>
+                <Link href="/apply" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">APPLY</Link>
               </div>
             </SheetContent>
           </Sheet>
@@ -50,14 +49,14 @@ export function Navbar() {
         <Link href="/">
           <div className="flex items-center cursor-pointer group">
             <div className="bg-primary text-primary-foreground w-12 h-12 flex items-center justify-center font-display font-bold text-2xl mr-3 border-2 border-black transform group-hover:-rotate-6 transition-transform">
-              A
+              R
             </div>
             <div className="flex flex-col">
               <h1 className="text-2xl font-display font-bold leading-none text-foreground tracking-tighter">
-                AAMCA
+                REPLIT FELLOWS
               </h1>
               <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted-foreground">
-                Lab of Culture
+                Builder Dinner Tour
               </span>
             </div>
           </div>
@@ -65,19 +64,16 @@ export function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-8">
-          <Link href="/visit" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Visit</Link>
-          <Link href="/exhibitions" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Exhibitions</Link>
-          <Link href="/collections" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Collections</Link>
-          <Link href="/events" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Events</Link>
+          <Link href="/tour" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">The Tour</Link>
+          <Link href="/stories" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Stories</Link>
+          <Link href="/resources" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Resources</Link>
+          <Link href="/faq" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">FAQ</Link>
         </div>
 
         {/* Actions */}
         <div className="flex items-center space-x-3">
-          <Button variant="ghost" size="icon" className="hidden md:flex text-foreground hover:text-primary border-2 border-transparent hover:border-border hover:bg-card">
-            <Search className="h-5 w-5" />
-          </Button>
           <Button className="hidden md:flex bg-primary text-primary-foreground hover:bg-primary/90 font-display font-bold tracking-wide border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
-            TICKETS
+            JOIN THE DINNER
           </Button>
         </div>
       </div>
