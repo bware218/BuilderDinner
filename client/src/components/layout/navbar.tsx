@@ -1,12 +1,23 @@
 import { Link } from "wouter";
-import { Menu, Search, Code2 } from "lucide-react";
+import { Menu, LogOut, User as UserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import type { User } from "@shared/schema";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const { user, isAuthenticated, isLoading } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +26,8 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const typedUser = user as User | undefined;
 
   return (
     <nav
@@ -72,9 +85,42 @@ export function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center space-x-3">
-          <Button className="hidden md:flex bg-primary text-primary-foreground hover:bg-primary/90 font-display font-bold tracking-wide border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
-            JOIN THE DINNER
-          </Button>
+          {!isLoading && (
+            <>
+              {isAuthenticated && typedUser ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="flex items-center space-x-2 border-2 border-transparent hover:border-border">
+                      <Avatar className="h-8 w-8 border-2 border-black">
+                        <AvatarImage src={typedUser.profileImageUrl || undefined} alt={typedUser.firstName || "User"} style={{ objectFit: 'cover' }} />
+                        <AvatarFallback className="bg-primary text-primary-foreground font-bold">
+                          {typedUser.firstName?.[0] || typedUser.email?.[0] || "U"}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span className="hidden md:block font-bold">{typedUser.firstName || "Account"}</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48 bg-background border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <DropdownMenuItem className="font-bold cursor-pointer hover:bg-muted">
+                      <UserIcon className="mr-2 h-4 w-4" />
+                      Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="bg-border" />
+                    <DropdownMenuItem asChild>
+                      <a href="/api/logout" className="font-bold cursor-pointer hover:bg-destructive hover:text-destructive-foreground flex items-center">
+                        <LogOut className="mr-2 h-4 w-4" />
+                        Log Out
+                      </a>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Button asChild className="hidden md:flex bg-primary text-primary-foreground hover:bg-primary/90 font-display font-bold tracking-wide border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
+                  <a href="/api/login">JOIN THE DINNER</a>
+                </Button>
+              )}
+            </>
+          )}
         </div>
       </div>
     </nav>
