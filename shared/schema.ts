@@ -6,6 +6,7 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
 
 // Session storage table.
 // (IMPORTANT) This table is mandatory for Replit Auth, don't drop it.
@@ -33,3 +34,21 @@ export const users = pgTable("users", {
 
 export type UpsertUser = typeof users.$inferInsert;
 export type User = typeof users.$inferSelect;
+
+// Invite Requests table
+export const inviteRequests = pgTable("invite_requests", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: varchar("user_id").notNull().references(() => users.id),
+  fullName: varchar("full_name").notNull(),
+  city: varchar("city").notNull(),
+  role: varchar("role").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertInviteRequestSchema = createInsertSchema(inviteRequests).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertInviteRequest = typeof inviteRequests.$inferInsert;
+export type InviteRequest = typeof inviteRequests.$inferSelect;
