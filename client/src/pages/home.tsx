@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { Calendar, ArrowRight, MapPin } from "lucide-react";
 
 // Import assets
-import upscaleDinnerImg from "@assets/generated_images/upscale_entrepreneur_dinner.png";
+import diverseDinnerImg from "@assets/generated_images/diverse_upscale_entrepreneur_dinner.png";
 
 export default function Home() {
   return (
@@ -16,9 +16,9 @@ export default function Home() {
       
       <main>
         <Hero 
-          image={upscaleDinnerImg}
+          image={diverseDinnerImg}
           title="BUILD IT YOURSELF"
-          subtitle="Join an exclusive evening of culinary excellence and visionary building. Connect with fellow founders, enjoy a curated menu, and bring your ideas to life."
+          subtitle="Join an exclusive evening of culinary excellence and visionary building. We are gathering the next generation of diverse founders in cities across the nation."
         />
         
         <section className="py-24 bg-primary text-primary-foreground border-y-2 border-black relative overflow-hidden">
@@ -33,11 +33,11 @@ export default function Home() {
                     <span className="font-mono text-sm font-bold uppercase tracking-widest">Our Mission</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 leading-[1.1] tracking-tight">
-                  SOFTWARE IS THE NEW<br/>
-                  <span className="bg-black text-white px-2 italic font-serif">LITERACY.</span>
+                  AMPLIFYING VOICES.<br/>
+                  <span className="bg-black text-white px-2 italic font-serif">BUILDING FUTURES.</span>
                 </h2>
                 <p className="text-xl md:text-2xl font-medium leading-relaxed mb-8 opacity-90 max-w-3xl">
-                  You don't need a Computer Science degree to build solutions for your community. The Replit Fellows Dinner Tour is about demystifying code and empowering educators, parents, and business owners to become builders in an environment of excellence.
+                  We believe brilliance is distributed equally, but opportunity is not. The Replit Fellows Dinner Tour is dedicated to empowering underrepresented founders in urban centers—giving you the tools, network, and mentorship to turn your vision into reality.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-6">
@@ -55,7 +55,7 @@ export default function Home() {
               <div className="lg:col-span-4">
                   <div className="bg-white text-black p-8 border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] rotate-2 transform hover:rotate-0 transition-transform duration-300">
                       <h3 className="font-hand text-3xl font-bold mb-4 text-primary">Host a Dinner</h3>
-                      <p className="font-sans font-bold mb-6">Want to bring this curated experience to your city? We're looking for community leaders.</p>
+                      <p className="font-sans font-bold mb-6">Champion the builders in your city. We're looking for community leaders in Atlanta, Oakland, NYC, and Minneapolis.</p>
                       <Button className="w-full bg-black text-white hover:bg-black/80 font-bold border-2 border-transparent">APPLY TO HOST</Button>
                   </div>
               </div>
@@ -76,9 +76,9 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { day: "12", month: "OCT", city: "Austin, TX", venue: "The Driskill", status: "OPEN" },
-                { day: "24", month: "OCT", city: "Detroit, MI", venue: "The Apparatus Room", status: "WAITLIST" },
-                { day: "05", month: "NOV", city: "Atlanta, GA", venue: "Ponce City Market", status: "OPEN" }
+                { day: "12", month: "OCT", city: "Atlanta, GA", venue: "Ponce City Market", status: "OPEN" },
+                { day: "24", month: "OCT", city: "Oakland, CA", venue: "The Tribune", status: "WAITLIST" },
+                { day: "05", month: "NOV", city: "Harlem, NYC", venue: "Red Rooster", status: "OPEN" }
               ].map((event, i) => (
                 <div key={i} className="group cursor-pointer relative">
                   <div className="absolute inset-0 bg-black translate-x-2 translate-y-2 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform"></div>
@@ -106,7 +106,7 @@ export default function Home() {
         <section className="py-20 bg-background">
             <div className="container mx-auto px-6 text-center">
                 <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">REQUEST AN INVITATION</h2>
-                <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Join the waitlist for the next exclusive dinner in your area. Curated guest lists ensuring high-impact networking.</p>
+                <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Join the waitlist for the next exclusive dinner in your area. We prioritize spaces for underrepresented founders.</p>
                 
                 <div className="max-w-md mx-auto flex gap-4">
                     <input type="email" placeholder="YOUR EMAIL" className="flex-1 bg-white border-2 border-black px-4 py-3 font-bold placeholder:text-muted-foreground/50 outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" />
