@@ -20,16 +20,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Invite request routes
-  app.post('/api/invite-requests', isAuthenticated, async (req: any, res) => {
+  // Invite request routes (public - no auth required)
+  app.post('/api/invite-requests', async (req, res) => {
     try {
-      const userId = req.user.claims.sub;
-      
       // Validate request body
-      const validatedData = insertInviteRequestSchema.parse({
-        ...req.body,
-        userId,
-      });
+      const validatedData = insertInviteRequestSchema.parse(req.body);
 
       const inviteRequest = await storage.createInviteRequest(validatedData);
       res.json(inviteRequest);
@@ -39,10 +34,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/invite-requests/check', isAuthenticated, async (req: any, res) => {
+  app.get('/api/invite-requests/check', async (req, res) => {
     try {
-      const userId = req.user.claims.sub;
-      const existingRequest = await storage.getInviteRequestByUserId(userId);
+      const email = req.query.email as string;
+      if (!email) {
+        return res.status(400).json({ message: "Email is required" });
+      }
+      const existingRequest = await storage.getInviteRequestByEmail(email);
       res.json({ hasRequested: !!existingRequest, request: existingRequest });
     } catch (error) {
       console.error("Error checking invite request:", error);

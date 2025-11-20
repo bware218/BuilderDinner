@@ -18,7 +18,7 @@ export interface IStorage {
   
   // Invite Request operations
   createInviteRequest(request: InsertInviteRequest): Promise<InviteRequest>;
-  getInviteRequestByUserId(userId: string): Promise<InviteRequest | undefined>;
+  getInviteRequestByEmail(email: string): Promise<InviteRequest | undefined>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -54,11 +54,11 @@ export class DatabaseStorage implements IStorage {
     return inviteRequest;
   }
 
-  async getInviteRequestByUserId(userId: string): Promise<InviteRequest | undefined> {
+  async getInviteRequestByEmail(email: string): Promise<InviteRequest | undefined> {
     const [request] = await db
       .select()
       .from(inviteRequests)
-      .where(eq(inviteRequests.userId, userId))
+      .where(eq(inviteRequests.email, email))
       .orderBy(inviteRequests.createdAt)
       .limit(1);
     return request;

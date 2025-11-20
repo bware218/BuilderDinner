@@ -38,7 +38,7 @@ export type User = typeof users.$inferSelect;
 // Invite Requests table
 export const inviteRequests = pgTable("invite_requests", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar("user_id").notNull().references(() => users.id),
+  email: varchar("email").notNull(),
   fullName: varchar("full_name").notNull(),
   city: varchar("city").notNull(),
   role: varchar("role").notNull(),
