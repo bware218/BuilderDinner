@@ -7,6 +7,7 @@ import { MapPin, Calendar, ArrowRight } from "lucide-react";
 import galleryImg1 from "@assets/_DSF4764_1765404414486.jpg";
 import galleryImg2 from "@assets/_DSF4755_1765404446002.jpg";
 import galleryImg3 from "@assets/_DSF4780_1765404630830.jpg";
+import galleryImg4 from "@assets/_DSF4805_1765404859886.jpg";
 
 const tourDates = [
   { day: "20", month: "NOV", city: "Oakland, CA", venue: "The Tribune", status: "OPEN" },
@@ -19,6 +20,7 @@ const galleryImages = [
   { src: galleryImg1, alt: "Founders in conversation at dinner event" },
   { src: galleryImg2, alt: "Diverse group networking at dinner table" },
   { src: galleryImg3, alt: "Builder engaged in discussion at event" },
+  { src: galleryImg4, alt: "Mentors connecting with founders at dinner" },
 ];
 
 export default function Tour() {
