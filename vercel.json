@@ -1,30 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "../dist"
-      }
-    }
-  ],
   "functions": {
-    "api/invite-requests.js": {
+    "api/*.js": {
       "maxDuration": 10
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/$1"
+      "source": "/((?!api/.*).*)",
+      "destination": "/index.html"
     }
-  ],
-  "env": {
-    "GOOGLE_SHEETS_WEBHOOK_URL": "@google_sheets_webhook_url"
-  }
+  ]
 }
