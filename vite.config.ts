@@ -38,7 +38,7 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
   },
-  base: process.env.NODE_ENV === 'production' ? '/BuilderDinner/' : '/',
+  base: '/', // Vercel handles routing, no need for base path
   server: {
     host: "0.0.0.0",
     allowedHosts: true,

@@ -4,8 +4,8 @@ const config = {
     apiUrl: 'http://localhost:3001',
   },
   production: {
-    // You'll replace this with your actual backend URL when deployed
-    apiUrl: 'https://your-backend-url.railway.app', // Example: Railway deployment
+    // For Vercel deployment, API routes are relative
+    apiUrl: '', // Empty string means same domain
   }
 };
 
