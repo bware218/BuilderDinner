@@ -35,9 +35,10 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
   },
+  base: process.env.NODE_ENV === 'production' ? '/BuilderDinner/' : '/',
   server: {
     host: "0.0.0.0",
     allowedHosts: true,

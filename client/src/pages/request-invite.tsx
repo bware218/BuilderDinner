@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useMutation } from "@tanstack/react-query";
 import { CheckCircle2 } from "lucide-react";
+import { API_ENDPOINTS } from "@/lib/config";
 
 export default function RequestInvite() {
   const { toast } = useToast();
@@ -20,7 +21,7 @@ export default function RequestInvite() {
 
   const mutation = useMutation({
     mutationFn: async (data: { fullName: string; email: string; city: string; role: string }) => {
-      const response = await fetch("http://localhost:3001/api/invite-requests", {
+      const response = await fetch(API_ENDPOINTS.inviteRequests, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
