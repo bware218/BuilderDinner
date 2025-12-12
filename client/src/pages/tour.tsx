@@ -21,6 +21,8 @@ const galleryImages = [
   { src: galleryImg2, alt: "Diverse group networking at dinner table" },
   { src: galleryImg3, alt: "Builder engaged in discussion at event" },
   { src: galleryImg4, alt: "Mentors connecting with founders at dinner" },
+  { src: "https://www.dropbox.com/scl/fi/6ggjtg45hid14ra26hlzo/_DSF4789.jpg?rlkey=quc11knxpsn4g0u3a2ex7tgen&st=t0tov2q5&dl=1", alt: "Collaborative building session at dinner event" },
+  { src: "https://www.dropbox.com/scl/fi/cg49eivg6so568u207p6x/_DSF4471.jpg?rlkey=wqjrbqjkalan3f92ce2bqz4ng&st=cwcb8kix&dl=1", alt: "Founders collaborating and networking at dinner" },
 ];
 
 export default function Tour() {
@@ -33,7 +35,7 @@ export default function Tour() {
         <section className="container mx-auto px-6 mb-20">
           <div className="max-w-4xl">
             <div className="inline-block bg-primary text-primary-foreground px-4 py-2 font-mono text-sm font-bold border-2 border-black mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-1">
-              2024-2025 TOUR
+              2025-2026 TOUR
             </div>
             <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tighter">
               THE BUILDER<br />DINNER TOUR

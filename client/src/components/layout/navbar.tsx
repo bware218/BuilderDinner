@@ -51,7 +51,7 @@ export function Navbar() {
               <div className="flex flex-col space-y-6 mt-10">
                 <Link href="/tour" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">THE TOUR</Link>
                 <Link href="/stories" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">STORIES</Link>
-                <Link href="/resources" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">RESOURCES</Link>
+                <a href="https://replit.com/learn" target="_blank" rel="noopener noreferrer" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">RESOURCES</a>
                 <Link href="/apply" className="text-4xl font-display font-bold hover:text-primary hover:underline decoration-4 underline-offset-4 transition-all">APPLY</Link>
               </div>
             </SheetContent>
@@ -79,7 +79,7 @@ export function Navbar() {
         <div className="hidden md:flex items-center space-x-12 mx-12">
           <Link href="/tour" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">The Tour</Link>
           <Link href="/stories" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Stories</Link>
-          <Link href="/resources" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Resources</Link>
+          <a href="https://replit.com/learn" target="_blank" rel="noopener noreferrer" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">Resources</a>
           <Link href="/faq" className="text-sm font-bold hover:text-primary transition-colors uppercase tracking-wide border-b-2 border-transparent hover:border-primary">FAQ</Link>
         </div>
 

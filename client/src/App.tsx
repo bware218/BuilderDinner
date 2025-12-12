@@ -7,6 +7,8 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import RequestInvite from "@/pages/request-invite";
 import Tour from "@/pages/tour";
+import Stories from "@/pages/stories";
+import FAQ from "@/pages/faq";
 
 function Router() {
   return (
@@ -14,6 +16,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/request-invite" component={RequestInvite} />
       <Route path="/tour" component={Tour} />
+      <Route path="/stories" component={Stories} />
+      <Route path="/faq" component={FAQ} />
       <Route component={NotFound} />
     </Switch>
   );

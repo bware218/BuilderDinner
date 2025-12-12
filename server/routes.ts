@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
 import { insertInviteRequestSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
+import { googleSheetsService } from "./googleSheets";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Auth middleware
@@ -62,6 +63,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error("Error checking invite request:", error);
       res.status(500).json({ message: "Failed to check invite request" });
     }
+  });
+
+  // Google Sheets setup instructions
+  app.get('/api/google-sheets-setup', (req, res) => {
+    res.type('text/plain');
+    res.send(googleSheetsService.getSetupInstructions());
   });
 
   const httpServer = createServer(app);

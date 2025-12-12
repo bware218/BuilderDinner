@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/ui/hero-section";
@@ -11,6 +12,23 @@ import { Link } from "wouter";
 import diverseDinnerImg from "@assets/generated_images/diverse_upscale_entrepreneur_dinner.png";
 
 export default function Home() {
+  const [showMoreCities, setShowMoreCities] = useState(false);
+
+  const originalCities = [
+    { day: "20", month: "NOV", city: "Oakland, CA", venue: "The Tribune", status: "OPEN" },
+    { day: "08", month: "DEC", city: "Atlanta, GA", venue: "Ponce City Market", status: "OPEN" },
+    { day: "18", month: "DEC", city: "New York City", venue: "La Esquina", status: "OPEN" },
+    { day: "03", month: "JAN", city: "Minneapolis, MN", venue: "Kyndred Hearth", status: "OPEN" }
+  ];
+
+  const newCities = [
+    { day: "15", month: "JAN", city: "San Francisco, CA", venue: "The Battery", status: "OPEN" },
+    { day: "28", month: "JAN", city: "Chicago, IL", venue: "Alinea", status: "OPEN" },
+    { day: "12", month: "FEB", city: "Seattle, WA", venue: "Canlis", status: "OPEN" },
+    { day: "25", month: "FEB", city: "Miami, FL", venue: "Joe's Stone Crab", status: "OPEN" }
+  ];
+
+  const currentCities = showMoreCities ? newCities : originalCities;
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white">
       <Navbar />
@@ -111,18 +129,17 @@ export default function Home() {
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b-4 border-black pb-6">
               <h2 className="text-5xl font-display font-bold tracking-tighter">TOUR DATES</h2>
-              <a href="#" className="text-lg font-bold uppercase tracking-wide hover:text-primary mt-4 md:mt-0 flex items-center group">
-                View All Cities <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+              <button 
+                onClick={() => setShowMoreCities(!showMoreCities)}
+                className="text-lg font-bold uppercase tracking-wide hover:text-primary mt-4 md:mt-0 flex items-center group transition-colors"
+              >
+                {showMoreCities ? 'View Original Cities' : 'View More Cities'} 
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { day: "20", month: "NOV", city: "Oakland, CA", venue: "The Tribune", status: "OPEN" },
-                { day: "08", month: "DEC", city: "Atlanta, GA", venue: "Ponce City Market", status: "OPEN" },
-                { day: "18", month: "DEC", city: "New York City", venue: "La Esquina", status: "OPEN" },
-                { day: "03", month: "JAN", city: "Minneapolis, MN", venue: "Kyndred Hearth", status: "OPEN" }
-              ].map((event, i) => (
+              {currentCities.map((event, i) => (
                 <div key={i} className="group cursor-pointer relative">
                   <div className="absolute inset-0 bg-black translate-x-2 translate-y-2 group-hover:translate-x-4 group-hover:translate-y-4 transition-transform"></div>
                   <div className="relative bg-white border-2 border-black p-8 h-full flex flex-col transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1">

@@ -20,7 +20,7 @@ export default function RequestInvite() {
 
   const mutation = useMutation({
     mutationFn: async (data: { fullName: string; email: string; city: string; role: string }) => {
-      const response = await fetch("/api/invite-requests", {
+      const response = await fetch("http://localhost:3001/api/invite-requests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -150,6 +150,10 @@ export default function RequestInvite() {
                     <SelectItem value="Atlanta, GA" className="font-medium">Atlanta, GA</SelectItem>
                     <SelectItem value="New York City" className="font-medium">New York City</SelectItem>
                     <SelectItem value="Minneapolis, MN" className="font-medium">Minneapolis, MN</SelectItem>
+                    <SelectItem value="San Francisco, CA" className="font-medium">San Francisco, CA</SelectItem>
+                    <SelectItem value="Chicago, IL" className="font-medium">Chicago, IL</SelectItem>
+                    <SelectItem value="Seattle, WA" className="font-medium">Seattle, WA</SelectItem>
+                    <SelectItem value="Miami, FL" className="font-medium">Miami, FL</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

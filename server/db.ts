@@ -5,13 +5,18 @@ import * as schema from "@shared/schema";
 
 neonConfig.webSocketConstructor = ws;
 
+// For local development without database
+let db: any = null;
+
 if (!process.env.DATABASE_URL) {
-  throw new Error(
-    "DATABASE_URL must be set. Did you forget to provision a database?",
-  );
+  console.log("⚠️  No DATABASE_URL found - running in mock mode for local testing");
+  console.log("   Google Sheets integration will still work!");
+  db = null;
+} else {
+  db = drizzle({
+    connection: process.env.DATABASE_URL,
+    schema,
+  });
 }
 
-export const db = drizzle({
-  connection: process.env.DATABASE_URL,
-  schema,
-});
+export { db };
